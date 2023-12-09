@@ -1,25 +1,24 @@
 <Project>
-    <PropertyGroup>
-        <!--
-          Включение централизованного управления пакетами,
+  <PropertyGroup>
+    <!--
+          пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,
           see https://docs.microsoft.com/en-us/nuget/consume-packages/central-package-management#enabling-central-package-management
           -->
-        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-        <!--
-          Включение возможности явного указания версий транзитивных зависимостей,
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <!--
+          пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,
           see https://docs.microsoft.com/en-us/nuget/consume-packages/central-package-management#transitive-pinning
           -->
-        <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
-        <!--
-          Явное включение возможности переопределять версии пакетов
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <!--
+          пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
           see https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management#overriding-package-versions
           -->
-        <EnablePackageVersionOverride>true</EnablePackageVersionOverride>
-      </PropertyGroup>
-
-      <ItemGroup>
-
-      </ItemGroup>
-
-
+    <EnablePackageVersionOverride>true</EnablePackageVersionOverride>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.25" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.25" />
+  </ItemGroup>
 </Project>
