@@ -15,3 +15,7 @@ dotnet ef database update NameOfMigration --project src/Store.Migrations --conte
 ```shell
 dotnet ef migrations remove --project src/Store.Migrations --context ResourceContext
 ```
+Список миграций
+```shell
+dotnet ef migrations list --project src/Store.Migrations --context ResourceContext
+```
