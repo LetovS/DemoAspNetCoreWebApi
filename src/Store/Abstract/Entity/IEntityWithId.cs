@@ -1,4 +1,4 @@
-﻿namespace Store.Abstract;
+﻿namespace Store.Abstract.Entity;
 
 public interface IEntityWithId
 {

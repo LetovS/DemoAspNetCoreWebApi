@@ -1,4 +1,4 @@
-﻿using Store.Abstract;
+﻿using Store.Abstract.Entity;
 
 namespace Store.Entities;
 
