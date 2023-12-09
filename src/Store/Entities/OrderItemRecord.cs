@@ -7,8 +7,11 @@ namespace Store.Entities;
 /// </summary>
 public class OrderItemRecord : EntityBase
 {
-    public OrderItemRecord(Guid id) : base(id)
+    public OrderItemRecord(Guid id, string name, decimal quantity,string unit, OrderRecord order) : base(id)
     {
+        Name = name;
+        Quantity = quantity;
+        Unit = unit;
     }
     
     /// <summary>
@@ -27,5 +30,5 @@ public class OrderItemRecord : EntityBase
     /// <remarks>кг, м, шт и пр. </remarks>
     public string Unit { get; set; }
     
-    public virtual OrderRecord Order { get; set; }
+    public virtual OrderRecord? Order { get; set; }
 }
