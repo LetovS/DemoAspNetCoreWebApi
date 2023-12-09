@@ -7,7 +7,10 @@ namespace Store.Entities;
 /// </summary>
 public class OrderRecord : EntityBase
 {
-    public OrderRecord(Guid id, string orderNumber, DateOnly orderDate) : base(id)
+    public OrderRecord(
+        Guid id,
+        string orderNumber,
+        DateTime orderDate) : base(id)
     {
         OrderNumber = orderNumber;
         OrderDate = orderDate;
@@ -21,12 +24,17 @@ public class OrderRecord : EntityBase
     /// <summary>
     /// Дата заказа
     /// </summary>
-    public DateOnly OrderDate { get; set; }
+    public DateTime OrderDate { get; set; }
 
     /// <summary>
     /// Все пункты заказа
     /// </summary>
     public virtual ICollection<OrderItemRecord> OrderItems { get; set; } = new List<OrderItemRecord>();
+
+    /// <summary>
+    /// ИД поставщика
+    /// </summary>
+    public Guid? ProviderId { get; set; }
     
     /// <summary>
     /// Поставщик

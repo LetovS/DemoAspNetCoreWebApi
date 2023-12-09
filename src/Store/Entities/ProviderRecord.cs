@@ -7,7 +7,9 @@ namespace Store.Entities;
 /// </summary>
 public class ProviderRecord : EntityBase
 {
-    public ProviderRecord(Guid id, string providerName, ICollection<OrderRecord> orders) : base(id)
+    public ProviderRecord(
+        Guid id,
+        string providerName) : base(id)
     {
         ProviderName = providerName;
     }
