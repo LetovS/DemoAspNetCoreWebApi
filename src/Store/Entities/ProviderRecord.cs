@@ -19,8 +19,8 @@ public class ProviderRecord : EntityBase
     /// </summary>
     public string ProviderName { get; set; }
 
-    /// <summary>
-    /// Все заказы поставщика
-    /// </summary>
-    public virtual ICollection<OrderRecord> Orders { get; set; } = new List<OrderRecord>();
+    ///// <summary>
+    ///// Все заказы поставщика
+    ///// </summary>
+    //public virtual ICollection<OrderRecord> Orders { get; set; } = new List<OrderRecord>();
 }

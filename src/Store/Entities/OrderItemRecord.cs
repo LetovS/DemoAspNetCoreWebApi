@@ -12,11 +12,12 @@ public class OrderItemRecord : EntityBase
         Guid id,
         string name,
         decimal quantity,
-        string unit) : base(id)
+        string unit/*, Guid orderId*/) : base(id)
     {
         Name = name;
         Quantity = quantity;
         Unit = unit;
+        //OrderId = orderId;
     }
     
     /// <summary>
@@ -40,8 +41,8 @@ public class OrderItemRecord : EntityBase
     /// </summary>
     public Guid? OrderId { get; set; }
     
-    /// <summary>
-    /// Заказ
-    /// </summary>
-    public virtual OrderRecord? Order { get; set; }
+    ///// <summary>
+    ///// Заказ
+    ///// </summary>
+    //public virtual OrderRecord? Order { get; set; }
 }

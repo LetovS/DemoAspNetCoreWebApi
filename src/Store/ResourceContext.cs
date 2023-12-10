@@ -17,7 +17,9 @@ public class ResourceContext :
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+
         InitializationData(modelBuilder);
     }
 
@@ -39,7 +41,8 @@ public class ResourceContext :
             .Range(1, 100)
             .Select(id => new OrderRecord(Guid.NewGuid(),
                     $"Order number {id}",
-                    DateTime.Now) { ProviderId = providersId[rnd.Next(1, 10)] }
+                    DateTime.Now)
+            { ProviderId = providersId[rnd.Next(1, 10)] }
             ).ToList();
         
         // Начальные данные для OrderRecord
@@ -55,7 +58,8 @@ public class ResourceContext :
                     .Select(id => new OrderItemRecord(Guid.NewGuid(),
                             $"Order name {id}",
                             GetRandomPrice(),
-                            "усл. ед"){OrderId = ordersId[rnd.Next(1,10)]}
+                            "усл. ед")
+                    { OrderId = ordersId[rnd.Next(1, 10)] }
                     )
             );
 

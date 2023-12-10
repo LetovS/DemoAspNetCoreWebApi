@@ -14,8 +14,17 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItemRecord>
         builder.ConfigureBaseEntity();
         
         builder.Property(p => p.Name).HasMaxLength(255).IsRequired();
+
         builder.Property(p => p.Unit).HasMaxLength(255).IsRequired();
+
         builder.Property(p => p.OrderId).IsRequired();
+
         builder.Property(p => p.Quantity).HasColumnType("decimal").HasPrecision(18,2).IsRequired();
+
+        //builder.HasOne<OrderRecord>()
+        //    .WithMany()
+        //    //.HasForeignKey()
+        //    .IsRequired()
+        //    .OnDelete(DeleteBehavior.Restrict);
     }
 }
