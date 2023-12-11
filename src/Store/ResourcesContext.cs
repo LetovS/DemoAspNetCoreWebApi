@@ -4,15 +4,15 @@ using Store.Entities;
 
 namespace Store;
 
-public class ResourceContext : 
+public class ResourcesContext : 
     DbContext,
-    IResourceContext, 
+    IResourcesContext, 
     IDbWriter,
     IDbReader,
     IUnitOfWork
 {
 
-    public ResourceContext(DbContextOptions<ResourceContext> options) : base(options) {}
+    public ResourcesContext(DbContextOptions<ResourcesContext> options) : base(options) {}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,7 +20,7 @@ public class ResourceContext :
 
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
-        InitializationData(modelBuilder);
+        //InitializationData(modelBuilder);
     }
 
     private static void InitializationData(ModelBuilder modelBuilder)
@@ -42,7 +42,9 @@ public class ResourceContext :
             .Select(id => new OrderRecord(Guid.NewGuid(),
                     $"Order number {id}",
                     DateTime.Now)
-            { ProviderId = providersId[rnd.Next(1, 10)] }
+            {
+                //ProviderId = providersId[rnd.Next(1, 10)]
+            }
             ).ToList();
         
         // Начальные данные для OrderRecord
@@ -59,7 +61,9 @@ public class ResourceContext :
                             $"Order name {id}",
                             GetRandomPrice(),
                             "усл. ед")
-                    { OrderId = ordersId[rnd.Next(1, 10)] }
+                    {
+                        //OrderId = ordersId[rnd.Next(1, 10)]
+                    }
                     )
             );
 

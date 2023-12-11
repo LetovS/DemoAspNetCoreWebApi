@@ -4,7 +4,7 @@ using Store.Entities;
 
 namespace Store.Abstract.Context;
 
-public interface IResourceContext
+public interface IResourcesContext
 {
     /// <summary>
     /// Поставщики
