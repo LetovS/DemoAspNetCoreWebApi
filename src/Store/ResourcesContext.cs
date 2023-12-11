@@ -11,7 +11,6 @@ public class ResourcesContext :
     IDbReader,
     IUnitOfWork
 {
-
     public ResourcesContext(DbContextOptions<ResourcesContext> options) : base(options) {}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
