@@ -17,7 +17,7 @@ public class OrderItemRecord : EntityBase
     /// <summary>
     /// Название товара
     /// </summary>
-    public string  Name { get; set; }
+    public string?  Name { get; set; }
    
     /// <summary>
     /// Стоимость товара
@@ -28,11 +28,11 @@ public class OrderItemRecord : EntityBase
     /// Еденица измерения товара
     /// </summary>
     /// <remarks>кг, м, шт и пр. </remarks>
-    public string Unit { get; set; }
+    public string? Unit { get; set; }
 
     /// <summary>
     /// ИД поставщика
     /// </summary>
     public Guid OrderId { get; set; }
-    public virtual OrderRecord Order { get; set; }
+    public virtual OrderRecord? Order { get; set; }
 }

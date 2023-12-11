@@ -15,7 +15,7 @@ public class OrderRecord : EntityBase
     /// <summary>
     /// Номер заказа
     /// </summary>
-    public string OrderNumber { get; set; }
+    public string? OrderNumber { get; set; }
     
     /// <summary>
     /// Дата заказа
@@ -26,7 +26,7 @@ public class OrderRecord : EntityBase
     /// ИД поставщика
     /// </summary>
     public Guid ProviderId { get; set; }
-    public virtual ProviderRecord Provider { get; set; }
+    public virtual ProviderRecord? Provider { get; set; }
 
-    public virtual List<OrderItemRecord> OrderItems { get; set; }
+    public virtual List<OrderItemRecord> OrderItems { get; set; } = new List<OrderItemRecord>();
 }
