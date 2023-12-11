@@ -39,10 +39,5 @@ public class OrderItemRecord : EntityBase
     /// <summary>
     /// ИД заказа
     /// </summary>
-    public Guid? OrderId { get; set; }
-    
-    ///// <summary>
-    ///// Заказ
-    ///// </summary>
-    //public virtual OrderRecord? Order { get; set; }
+    //public Guid? OrderId { get; set; }
 }
