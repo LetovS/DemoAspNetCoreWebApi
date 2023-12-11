@@ -12,8 +12,8 @@ using Store;
 namespace Store.Migrations.Migrations
 {
     [DbContext(typeof(ResourcesContext))]
-    [Migration("20231211171351_Init_without_reletionships_between_tables")]
-    partial class Init_without_reletionships_between_tables
+    [Migration("20231211184644_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace Store.Migrations.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<decimal>("Quantity")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
@@ -44,6 +47,8 @@ namespace Store.Migrations.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("OrderItems", (string)null);
                 });
@@ -61,11 +66,16 @@ namespace Store.Migrations.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<Guid>("ProviderId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OrderNumber")
                         .IsUnique()
                         .HasDatabaseName("UQ_Orders_Number");
+
+                    b.HasIndex("ProviderId");
 
                     b.ToTable("Orders", (string)null);
                 });
@@ -87,6 +97,38 @@ namespace Store.Migrations.Migrations
                         .HasDatabaseName("UQ_Providers_Name");
 
                     b.ToTable("Providers", (string)null);
+                });
+
+            modelBuilder.Entity("Store.Entities.OrderItemRecord", b =>
+                {
+                    b.HasOne("Store.Entities.OrderRecord", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("Store.Entities.OrderRecord", b =>
+                {
+                    b.HasOne("Store.Entities.ProviderRecord", "Provider")
+                        .WithMany("Orders")
+                        .HasForeignKey("ProviderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Provider");
+                });
+
+            modelBuilder.Entity("Store.Entities.OrderRecord", b =>
+                {
+                    b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("Store.Entities.ProviderRecord", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

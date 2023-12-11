@@ -8,14 +8,14 @@ namespace Store.Entities;
 public class ProviderRecord : EntityBase
 {
     public ProviderRecord(
-        Guid id,
-        string providerName) : base(id)
+        Guid id) : base(id)
     {
-        ProviderName = providerName;
     }
     
     /// <summary>
     /// Название поставщика
     /// </summary>
     public string ProviderName { get; set; }    
+
+    public virtual List<OrderRecord> Orders { get; set; }
 }

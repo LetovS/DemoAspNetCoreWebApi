@@ -9,15 +9,9 @@ namespace Store.Entities;
 public class OrderItemRecord : EntityBase
 {
     public OrderItemRecord(
-        Guid id,
-        string name,
-        decimal quantity,
-        string unit/*, Guid orderId*/) : base(id)
+        Guid id) : base(id)
     {
-        Name = name;
-        Quantity = quantity;
-        Unit = unit;
-        //OrderId = orderId;
+        
     }
     
     /// <summary>
@@ -35,9 +29,10 @@ public class OrderItemRecord : EntityBase
     /// </summary>
     /// <remarks>кг, м, шт и пр. </remarks>
     public string Unit { get; set; }
-    
+
     /// <summary>
-    /// ИД заказа
+    /// ИД поставщика
     /// </summary>
-    //public Guid? OrderId { get; set; }
+    public Guid OrderId { get; set; }
+    public virtual OrderRecord Order { get; set; }
 }

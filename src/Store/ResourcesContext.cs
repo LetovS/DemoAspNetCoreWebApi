@@ -19,57 +19,55 @@ public class ResourcesContext :
 
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
-        //InitializationData(modelBuilder);
+        InitializationData(modelBuilder);
     }
 
     private static void InitializationData(ModelBuilder modelBuilder)
     {
         var providers = Enumerable
             .Range(1, 10)
-            .Select(id => new ProviderRecord(Guid.NewGuid(), $"Provider name {id}")).ToList();
+            .Select(id => new ProviderRecord(Guid.NewGuid()) { ProviderName = $"Provider name {id}" }).ToList();
 
         var providersId = providers.Select(x => x.Id).ToList();
-        
+
         modelBuilder.Entity<ProviderRecord>()
             .HasData(providers);
 
-        
-        
         var rnd = new Random();
         var orders = Enumerable
             .Range(1, 100)
-            .Select(id => new OrderRecord(Guid.NewGuid(),
-                    $"Order number {id}",
-                    DateTime.Now)
+            .Select(id => new OrderRecord(Guid.NewGuid())
             {
-                //ProviderId = providersId[rnd.Next(1, 10)]
+                OrderNumber = $"Order number {id}",
+                OrderDate = DateTime.Now,
+                ProviderId = providersId[rnd.Next(1, 10)]
             }
             ).ToList();
-        
+
         // Начальные данные для OrderRecord
         modelBuilder.Entity<OrderRecord>()
             .HasData(orders);
-        
+
         var ordersId = orders.Select(x => x.Id).ToList();
-        
+
         modelBuilder.Entity<OrderItemRecord>()
             .HasData(
                 Enumerable
-                    .Range(1,2500)
-                    .Select(id => new OrderItemRecord(Guid.NewGuid(),
-                            $"Order name {id}",
-                            GetRandomPrice(),
-                            "усл. ед")
-                    {
-                        //OrderId = ordersId[rnd.Next(1, 10)]
-                    }
+                    .Range(1, 2500)
+                        .Select(id => new OrderItemRecord(Guid.NewGuid())
+                        {
+                            Name = $"Order name {id}",
+                            Quantity = GetRandomPrice(),
+                            Unit = "усл. ед",
+                            OrderId = ordersId[rnd.Next(1, 10)]
+                        }
                     )
             );
 
         // Получает цену в диапазоне 100..1000 
         decimal GetRandomPrice() => (decimal)(rnd.Next(100, 1000) * rnd.NextDouble());
     }
-    
+
     public DbSet<ProviderRecord> Providers => Set<ProviderRecord>();
     
     public DbSet<OrderRecord> Orders => Set<OrderRecord>();

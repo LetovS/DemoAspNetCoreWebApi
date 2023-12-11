@@ -8,13 +8,8 @@ namespace Store.Entities;
 public class OrderRecord : EntityBase
 {
     public OrderRecord(
-        Guid id,
-        string orderNumber,
-        DateTime orderDate/*, Guid providerId*/) : base(id)
+        Guid id) : base(id)
     {
-        OrderNumber = orderNumber;
-        OrderDate = orderDate;
-        //ProviderId = providerId;
     }
 
     /// <summary>
@@ -30,5 +25,8 @@ public class OrderRecord : EntityBase
     /// <summary>
     /// ИД поставщика
     /// </summary>
-    //public Guid? ProviderId { get; set; }    
+    public Guid ProviderId { get; set; }
+    public virtual ProviderRecord Provider { get; set; }
+
+    public virtual List<OrderItemRecord> OrderItems { get; set; }
 }
