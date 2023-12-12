@@ -9,7 +9,7 @@ public class ResourcesContext :
     IResourcesContext, 
     IDbWriter,
     IDbReader,
-    IUnitOfWork
+    IDbUnitOfWork
 {
     public ResourcesContext(DbContextOptions<ResourcesContext> options) : base(options) {}
 
@@ -84,7 +84,7 @@ public class ResourcesContext :
         .AsNoTracking()
         .AsQueryable();
 
-    async Task<int> IUnitOfWork.SaveChangesAsync(CancellationToken ct)
+    async Task<int> IDbUnitOfWork.SaveChangesAsync(CancellationToken ct)
     {
         var count = await base.SaveChangesAsync(ct);
 

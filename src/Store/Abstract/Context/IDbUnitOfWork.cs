@@ -1,6 +1,6 @@
 ﻿namespace Store.Abstract.Context;
 
-public interface IUnitOfWork
+public interface IDbUnitOfWork
 {
     /// <summary>
     /// Сохранить изменения в БД

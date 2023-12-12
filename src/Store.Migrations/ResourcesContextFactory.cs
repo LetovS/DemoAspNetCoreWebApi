@@ -12,7 +12,7 @@ public class ResourcesContextFactory : IDesignTimeDbContextFactory<ResourcesCont
         optionsBuilder
             .UseSqlServer(connectionString: Constants.ConnectionString, opt =>
             {
-                opt.MigrationsAssembly(typeof(ResourcesContextFactory).Assembly.FullName);
+                opt.MigrationsAssembly(Constants.MigrationsAssemblyName);
                 opt.MigrationsHistoryTable(Constants.MigrationsHistoryTableName);
             } );
         
