@@ -1,6 +1,6 @@
 ﻿namespace Store.Abstract.Entity;
 
-public interface IEntityWithId
+public interface IEntityWithId : IEntity
 {
     /// <summary>
     /// Entity's identificator
