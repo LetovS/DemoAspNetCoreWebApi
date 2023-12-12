@@ -1,23 +1,36 @@
-﻿using Store.DI;
-using Microsoft.Extensions.Hosting;
-using Hosts;
-using Microsoft.Extensions.Configuration;
-using Repositories.DI;
-using Store.ConfigurationOptions;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
+using Store.Migrations;
 
+namespace Web.Hosts;
 
-Host
-    .CreateDefaultBuilder(args)
-    .ConfigureServices((hostBuilder, services) =>
+public static class Program
+{
+    public static void Main(string[] args)
     {
-        var databaseOptions = new DatabaseOptions();
+        DatabaseMigrationManager.MigrateSchema().ConfigureAwait(false);
+        CreateHostBuilder(args).Build().Run();
+    }
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+                                    Host.CreateDefaultBuilder(args).ConfigureServices((x,y) =>
+                                    {
+                                        var config = x.Configuration;
+                                        y.ConfigureServices(config);
+                                    });
+}
 
-        hostBuilder.Configuration.GetSection(nameof(DatabaseOptions)).Bind(databaseOptions);
 
-        services.AddStoreDependencies(databaseOptions);
+//Host
+//    .CreateDefaultBuilder(args)
+//    .ConfigureServices((hostBuilder, services) =>
+//    {
+//        var databaseOptions = new DatabaseOptions();
 
-        services.AddRepositoriesAndEntityFactory();
-    })
-    .Build()
-    .MigrateDatabase()
-    .Run();
+//        hostBuilder.Configuration.GetSection(nameof(DatabaseOptions)).Bind(databaseOptions);
+
+//        services.AddStoreDependencies(databaseOptions);
+
+//        services.AddRepositoriesAndEntityFactory();
+//    })
+//    .Build()
+//    .Run();

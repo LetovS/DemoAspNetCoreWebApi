@@ -5,18 +5,11 @@ using Repositories.DI;
 using Store.ConfigurationOptions;
 using Store.DI;
 
-namespace Web.Host;
+namespace Web.Hosts;
 
-public sealed class Startup
+public static class Startup
 {
-    private readonly IConfiguration configuration;
-
-    public Startup(IConfiguration configuration)
-    {
-        this.configuration = configuration;
-    }
-
-    public void ConfigureServices(IServiceCollection services)
+    public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
         var databaseOptions = new DatabaseOptions();
         
@@ -25,11 +18,7 @@ public sealed class Startup
         services.AddStoreDependencies(databaseOptions);
 
         services.AddRepositoriesAndEntityFactory();
-    }
-
-    public void Configure(IApplicationBuilder app)
-    {
-        
-    }
+        return services;
+    }   
 }
 

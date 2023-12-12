@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Program = Web.Host.Program;
+using Web.Hosts;
 
 namespace UnitTests.Dependencies;
 
@@ -16,11 +15,7 @@ public sealed class ContainerFixture : IDisposable
     /// </summary>
     public ContainerFixture()
     {
-        host = Program.CreateHostBuilder(Array.Empty<string>(), b =>
-            {
-                var builder = Program.ConfigureWebHostBuilder(b);
-            })
-            .Build();
+        host = Program.CreateHostBuilder(Array.Empty<string>()).Build();
     }
 
     public IServiceProvider Container => host.Services;
