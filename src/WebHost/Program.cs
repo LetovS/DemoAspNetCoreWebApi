@@ -3,6 +3,7 @@ using Store.DI;
 using Microsoft.Extensions.Hosting;
 using Host;
 using Microsoft.Extensions.Configuration;
+using Repositories.DI;
 using Store.ConfigurationOptions;
 using Store.Migrations;
 
@@ -16,6 +17,7 @@ CustomHost.Host
         var databaseOptions = new DatabaseOptions();
         hostBuilder.Configuration.GetSection(nameof(DatabaseOptions)).Bind(databaseOptions);
         services.AddStoreDependencies(databaseOptions);
+        services.AddRepositoriesAndEntityFactory();
     })
     .Build()
     .MigrateDatabase()
