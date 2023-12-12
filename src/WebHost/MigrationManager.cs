@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Store;
 
-namespace Host;
+namespace Hosts;
 
 public static class MigrationManager
 {

@@ -9,4 +9,6 @@ public interface IDbReader
     /// </summary>
     /// <remarks>.AsNoTracking() - true</remarks>
     IQueryable<TEntity> Read<TEntity>() where TEntity : class, IEntityWithId;
+
+    public IQueryable<TEntity> Set<TEntity> () where TEntity : class, IEntityWithId;
 }
