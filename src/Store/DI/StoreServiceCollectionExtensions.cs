@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Store.Abstract.Context;
+using Store.ConfigurationOptions;
 
 namespace Store.DI;
 
@@ -9,9 +12,13 @@ public static class StoreServiceCollectionExtensions
     /// Внедрям зависимости
     /// </summary>
     /// <remarks>Добавляются: ResourcesContext, IResourcesContext, IDbWriter, IDbReader, IDbUnitOfWork</remarks>
-    public static void AddStoreDependencies(this IServiceCollection services)
+    public static void AddStoreDependencies(this IServiceCollection services, DatabaseOptions options)
     {
-        services.AddDbContext<ResourcesContext>();
+        services.AddDbContext<ResourcesContext>(opt => opt.UseSqlServer(options.ConnectionString
+            , opts => {
+                opts.MigrationsHistoryTable(options.MigrationsHistoryTableName);
+                opts.MigrationsAssembly(options.MigrationsAssemblyName);
+            }));
         
         // Добавляем контекст таким образом, чтобы при вызове был один и тот же экземляр контекста
         services.AddScoped<IResourcesContext>(provider => provider.GetRequiredService<ResourcesContext>());
