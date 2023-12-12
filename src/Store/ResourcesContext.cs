@@ -84,6 +84,11 @@ public class ResourcesContext :
         .AsNoTracking()
         .AsQueryable();
 
+    IQueryable<TEntity> IDbReader.Set<TEntity>()
+    {
+        return base.Set<TEntity>();
+    }
+
     async Task<int> IDbUnitOfWork.SaveChangesAsync(CancellationToken ct)
     {
         var count = await base.SaveChangesAsync(ct);
