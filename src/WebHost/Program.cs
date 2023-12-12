@@ -18,19 +18,3 @@ public static class Program
                                         y.ConfigureServices(config);
                                     });
 }
-
-
-//Host
-//    .CreateDefaultBuilder(args)
-//    .ConfigureServices((hostBuilder, services) =>
-//    {
-//        var databaseOptions = new DatabaseOptions();
-
-//        hostBuilder.Configuration.GetSection(nameof(DatabaseOptions)).Bind(databaseOptions);
-
-//        services.AddStoreDependencies(databaseOptions);
-
-//        services.AddRepositoriesAndEntityFactory();
-//    })
-//    .Build()
-//    .Run();
