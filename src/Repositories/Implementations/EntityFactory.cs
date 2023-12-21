@@ -3,8 +3,12 @@ using Store.Entities;
 
 namespace Repositories.Implementations;
 
+/// <summary>
+/// Фабрика сущностей
+/// </summary>
 public class EntityFactory : IEntityFactory
 {
+    /// <inheritdoc/>
     public ProviderRecord CreateNewProvider(
         Guid? id,
         string name) =>
@@ -13,6 +17,7 @@ public class EntityFactory : IEntityFactory
                     ProviderName = name
                 };
 
+    /// <inheritdoc/>
     public OrderRecord CreateNewOrder(
         Guid? id,
         string orderNumber,
@@ -25,6 +30,7 @@ public class EntityFactory : IEntityFactory
                     ProviderId = providerId
                 };
 
+    /// <inheritdoc/>
     public OrderItemRecord CreateNewOrderItem(
         Guid? id,
         string name,

@@ -3,6 +3,9 @@ using Store.Abstract.Entity;
 
 namespace Repositories.Abstract;
 
+/// <summary>
+/// Интерфейс для базового репозитория чтения
+/// </summary>
 public interface IDbReadRepositoryBase<TEntity> : IDbRepository
 where TEntity : IEntity
 {
@@ -14,7 +17,7 @@ where TEntity : IEntity
     /// <summary>
     /// Получить сущность по ИД с навигационным свойством
     /// </summary>
-    Task<TEntity?> GetEntitysIncluding<TProperty>(Guid id, Expression<Func<TEntity, TProperty>> navigationProperty, CancellationToken ct = default);
+    Task<TEntity?> GetEntityIncluding<TProperty>(Guid id, Expression<Func<TEntity, TProperty>> navigationProperty, CancellationToken ct = default);
 
     /// <summary>
     /// Проверить сущность на существование
@@ -27,7 +30,7 @@ where TEntity : IEntity
     /// <param name="offset">Количество элементов которое нужно пропустить</param>
     /// <param name="limit">Количество элементов которое нужно взять</param>
     /// <param name="ct">Токен отмены</param>
-    Task<(int total, IReadOnlyCollection<TEntity> items)> GetAll(
+    Task<(int total, IReadOnlyList<TEntity> items)> GetAll(
         int offset = 0,
         int limit = 100,
         CancellationToken ct = default);

@@ -6,18 +6,25 @@ using Store.Entities;
 
 namespace Repositories.Implementations.Provider;
 
-public class ProviderReadRepository : ReadRepositoryBase<ProviderRecord> , IProviderReadRepository
+/// <summary>
+/// Репозиторй чтения провайдера
+/// </summary>
+public sealed class ProviderReadRepository : 
+    ReadRepositoryBase<ProviderRecord>,
+    IProviderReadRepository
 {
+    /// <summary>
+    /// ctor.
+    /// </summary>
     public ProviderReadRepository(IDbReader dbReader) : base(dbReader)
     {
     }
-
-    public async Task<ProviderRecord?> GetByName(
-        string providerName
-        , CancellationToken ct) => 
-                                await DbReader
-                                    .Read<ProviderRecord>()
-                                    .Where(x => x.ProviderName!.Equals(providerName))
-                                    .FirstOrDefaultAsync(ct);
+    
+    /// <inheritdoc/>
+    public async Task<ProviderRecord?> GetByName(string providerName, CancellationToken ct) =>
+        await DbReader
+            .Read<ProviderRecord>()
+            .Where(x => x.ProviderName!.Equals(providerName))
+            .FirstOrDefaultAsync(ct);
    
 }

@@ -2,6 +2,9 @@
 
 namespace Repositories.Abstract.Provider;
 
+/// <summary>
+/// Репозиторий чтения поставщика услуг
+/// </summary>
 public interface IProviderReadRepository : IDbReadRepositoryBase<ProviderRecord>
 {
     /// <summary>
