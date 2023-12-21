@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Store.Abstract.Context;
 using Store.ConfigurationOptions;
 
 namespace Store.DI;
 
+/// <summary>
+/// Регистрация зависимостей хранилища
+/// </summary>
 public static class StoreServiceCollectionExtensions
 {
     /// <summary>

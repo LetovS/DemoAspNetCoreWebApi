@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Store.Abstract.Entity;
+﻿using Store.Abstract.Entity;
 
 namespace Store.Entities;
 
@@ -8,6 +7,9 @@ namespace Store.Entities;
 /// </summary>
 public class OrderItemRecord : EntityBase
 {
+    /// <summary>
+    /// ctor.
+    /// </summary>
     public OrderItemRecord(
         Guid id) : base(id)
     {
@@ -34,5 +36,9 @@ public class OrderItemRecord : EntityBase
     /// ИД поставщика
     /// </summary>
     public Guid OrderId { get; set; }
+    
+    /// <summary>
+    /// Заказ
+    /// </summary>
     public virtual OrderRecord? Order { get; set; }
 }
