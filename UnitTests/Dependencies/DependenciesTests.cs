@@ -1,12 +1,14 @@
 ﻿using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories.Abstract;
-using Repositories.Implementations.Order;
 using Repositories.Implementations.Provider;
 using Xunit;
 
 namespace UnitTests.Dependencies;
 
+/// <summary>
+/// Тестирование DI
+/// </summary>
 public class DependenciesTests : IClassFixture<ContainerFixture>
 {
     private readonly IServiceProvider container;
@@ -33,8 +35,9 @@ public class DependenciesTests : IClassFixture<ContainerFixture>
     }
 
     /// <summary>
-    /// Список контроллеров Api
+    /// Получить все репозитории
     /// </summary>
+    /// <returns></returns>
     public static IEnumerable<object[]> Repositories()
     {
         var implements = typeof(ProviderReadRepository).Assembly

@@ -18,6 +18,9 @@ public sealed class ContainerFixture : IDisposable
         host = Program.CreateHostBuilder(Array.Empty<string>()).Build();
     }
 
+    /// <summary>
+    /// Сервисы
+    /// </summary>
     public IServiceProvider Container => host.Services;
 
     /// <inheritdoc />
