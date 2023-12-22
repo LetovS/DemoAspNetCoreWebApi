@@ -14,7 +14,7 @@ public interface IDbReader
     IQueryable<TEntity> Read<TEntity>() where TEntity : class, IEntityWithId;
 
     /// <summary>
-    /// 
+    /// Что то
     /// </summary>
     public IQueryable<TEntity> Set<TEntity> () where TEntity : class, IEntityWithId;
 }

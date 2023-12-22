@@ -33,7 +33,7 @@ public class OrderItemRecord : EntityBase
     public string? Unit { get; set; }
 
     /// <summary>
-    /// ИД поставщика
+    /// ИД заказа
     /// </summary>
     public Guid OrderId { get; set; }
     
