@@ -10,13 +10,13 @@ public sealed class UpdateProviderModel : IUpdateModel
     /// <summary>
     /// Номер закзаа
     /// </summary>
-    public string Name { get; set; }
+    public string ProviderName { get; set; }
 
     /// <summary>
     /// ctor.
     /// </summary>
-    public UpdateProviderModel(string name)
+    public UpdateProviderModel(string providerName)
     {
-        Name = name;
+        ProviderName = providerName;
     }
 }

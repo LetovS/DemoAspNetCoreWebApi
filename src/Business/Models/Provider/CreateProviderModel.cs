@@ -10,13 +10,13 @@ public sealed class CreateProviderModel : ICreateModel
     /// <summary>
     /// Название провайдера
     /// </summary>
-    public string Name { get; set; }
+    public string ProviderName { get; set; }
 
     /// <summary>
     /// ctor.
     /// </summary>
-    public CreateProviderModel(string name)
+    public CreateProviderModel(string providerName)
     {
-        Name = name;
+        ProviderName = providerName;
     }
 }

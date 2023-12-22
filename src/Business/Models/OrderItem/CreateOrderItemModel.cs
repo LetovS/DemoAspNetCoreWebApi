@@ -38,7 +38,7 @@ public sealed class CreateOrderItemModel : ICreateModel
     public string Unit { get; set; }
 
     /// <summary>
-    /// ИД поставщика
+    /// ИД заказа
     /// </summary>
     public Guid OrderId { get; set; }
 }
