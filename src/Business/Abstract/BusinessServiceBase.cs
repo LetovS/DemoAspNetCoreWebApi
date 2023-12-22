@@ -95,7 +95,7 @@ public abstract class BusinessServiceBase<TEntity, TCreateModel, TUpdateModel> :
     /// </summary>
     public async Task<Guid> CreateAsync(Guid id, TCreateModel model, CancellationToken ct)
     {
-        var createdEntity = CreateNewEntity(id);
+        var createdEntity = CreateNewEntity(id, model);
         
         Mapper.Map(model, createdEntity);
         
@@ -165,5 +165,6 @@ public abstract class BusinessServiceBase<TEntity, TCreateModel, TUpdateModel> :
     /// Создание новой сущности
     /// </summary>
     /// <param name="id">ИД</param>
-    protected abstract TEntity CreateNewEntity(Guid? id);
+    /// <param name="model">Модель создания сущности</param>
+    protected abstract TEntity CreateNewEntity(Guid? id, TCreateModel model);
 }
