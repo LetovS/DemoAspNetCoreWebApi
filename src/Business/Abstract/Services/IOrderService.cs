@@ -10,7 +10,7 @@ public interface IOrderService : IBusinessService
     /// <summary>
     /// Получить все заказы по номеру поставщика услуг
     /// </summary>
-    Task<IReadOnlyList<OrderRecord>> GetAllByProviderId(int providerId, CancellationToken ct = default);
+    Task<IReadOnlyList<OrderRecord>> GetAllByProviderId(Guid providerId, CancellationToken ct = default);
 
     /// <summary>
     /// Получить заказ по номеру
