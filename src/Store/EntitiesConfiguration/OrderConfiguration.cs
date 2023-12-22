@@ -5,8 +5,12 @@ using Store.EntitiesConfiguration.Extensions;
 
 namespace Store.EntitiesConfiguration;
 
+/// <summary>
+/// Конфигурирование заказа
+/// </summary>
 public class OrderConfiguration : IEntityTypeConfiguration<OrderRecord>
 {
+    /// <inheritdoc/>
     public void Configure(EntityTypeBuilder<OrderRecord> builder)
     {
         builder.ToTable("Orders");

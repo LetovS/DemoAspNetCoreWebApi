@@ -6,8 +6,9 @@ using Store.DI;
 
 namespace Web.Hosts;
 
-public static class Startup
+internal static class Startup
 {
+    /// <inheritdoc/>
     public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
         var databaseOptions = new DatabaseOptions();

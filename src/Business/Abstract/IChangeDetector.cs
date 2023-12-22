@@ -13,7 +13,9 @@ public interface IChangeDetector<in TEntity, in TUpdateModel>
     where TUpdateModel : class, IUpdateModel
 {
     /// <summary>
-    /// Вычислить, эквивалентна модель <see cref="TUpdateModel"/> сущности <see cref="TEntity"/>
+    /// Вычислить, эквивалентна модель/>
     /// </summary>
+    /// <param name="entity"></param>
+    /// <param name="model"></param>
     bool HasNoChanges(TEntity entity, TUpdateModel model);
 }

@@ -125,7 +125,7 @@ public abstract class BusinessServiceBase<TEntity, TCreateModel, TUpdateModel> :
         // true изменений нет
         if (ChangeDetector.HasNoChanges(entity, model))
         {
-            throw new ArgumentException();
+            throw new ArgumentException("Изменений нет");
         }
 
         Mapper.Map(model, entity);

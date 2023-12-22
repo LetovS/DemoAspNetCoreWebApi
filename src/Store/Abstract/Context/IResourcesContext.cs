@@ -4,6 +4,9 @@ using Store.Entities;
 
 namespace Store.Abstract.Context;
 
+/// <summary>
+/// Определение контекста БД
+/// </summary>
 public interface IResourcesContext
 {
     /// <summary>
@@ -21,5 +24,8 @@ public interface IResourcesContext
     /// </summary>
     public DbSet<OrderItemRecord> OrderItems { get; }
     
+    /// <summary>
+    /// Фасад
+    /// </summary>
     DatabaseFacade Database { get; }
 }

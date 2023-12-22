@@ -3,8 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Store.Migrations;
 
+/// <summary>
+/// Менеджер миграций
+/// </summary>
 public static class DatabaseMigrationManager
 {
+    /// <summary>
+    /// Миграция схемы БД
+    /// </summary>
     public static async Task MigrateSchema()
     {
         Console.WriteLine("Applying database schema migration...");

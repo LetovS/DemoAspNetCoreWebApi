@@ -3,12 +3,17 @@ using Store.Abstract.Entity;
 
 namespace Store.EntitiesConfiguration.Extensions;
 
+/// <summary>
+/// Расширение для настройки сущностей БД
+/// </summary>
 public static class ConfigurationExtensions
 {
     /// <summary>
     /// Настройка первичного ключа
     /// </summary>
-    /// <remarks><Без автоинкремента счетчика идентификаторов</remarks>
+    /// <remarks>
+    /// Без автоинкремента счетчика идентификаторов
+    /// </remarks>
     public static void ConfigureBaseEntity<TEntity>(this EntityTypeBuilder<TEntity> builder)
         where TEntity : EntityBase
     {

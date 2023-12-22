@@ -2,6 +2,9 @@
 
 namespace Store.Abstract.Context;
 
+/// <summary>
+/// Врайтер
+/// </summary>
 public interface IDbWriter
 {
     /// <summary>

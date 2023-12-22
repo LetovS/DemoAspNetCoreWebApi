@@ -5,8 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Store.Migrations.Migrations
 {
+    /// <summary>
+    /// Инициирующая миграция
+    /// </summary>
     public partial class Init : Migration
     {
+        /// <inheritdoc/>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -3143,6 +3147,7 @@ namespace Store.Migrations.Migrations
                 unique: true);
         }
 
+        /// <inheritdoc/>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

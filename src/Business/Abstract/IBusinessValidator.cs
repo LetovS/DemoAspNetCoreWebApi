@@ -2,6 +2,9 @@
 
 namespace Business.Abstract;
 
+/// <summary>
+/// Бизнес валидатор
+/// </summary>
 public interface IBusinessValidator<in TEntity>
     where TEntity : IEntity
 {
