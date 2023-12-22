@@ -33,7 +33,7 @@ public class ProviderValidator : ValidatorBase<ProviderRecord>
 
         if (entityById != null && entityByName != null)
         {
-            throw new ArgumentException();
+            throw new ArgumentException("Сохранить нельзя");
         }
     }
 
@@ -45,7 +45,7 @@ public class ProviderValidator : ValidatorBase<ProviderRecord>
         var orders = await _readOrderRepository.GetByProviderId(entityId, ct);
         if (orders.Any())
         {
-            throw new ArgumentException();
+            throw new ArgumentException("Удалить нельзя");
         }
     }
 }

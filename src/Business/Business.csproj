@@ -1,10 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-      <Folder Include="DI\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Repositories\Repositories.csproj" />
       <ProjectReference Include="..\Store\Store.csproj" />
     </ItemGroup>

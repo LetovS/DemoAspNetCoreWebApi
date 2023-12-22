@@ -45,6 +45,6 @@ public class ProviderService :
     /// <inheritdoc/>
     protected override ProviderRecord CreateNewEntity(Guid? id, CreateProviderModel model)
     {
-        return _factory.CreateNewProvider(id, model.Name);
+        return _factory.CreateNewProvider(id, model.ProviderName);
     }
 }

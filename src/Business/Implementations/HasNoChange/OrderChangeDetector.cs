@@ -7,7 +7,7 @@ namespace Business.Implementations.HasNoChange;
 /// <summary>
 /// Проверяет изменения в заказе
 /// </summary>
-public sealed class OrderHasNoChange : IChangeDetector<OrderRecord, UpdateOrderModel>
+public sealed class OrderChangeDetector : IChangeDetector<OrderRecord, UpdateOrderModel>
 {
     /// <inheritdoc/>
     public bool HasNoChanges(OrderRecord entity, UpdateOrderModel model)

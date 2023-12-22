@@ -7,11 +7,11 @@ namespace Business.Implementations.HasNoChange;
 /// <summary>
 /// Проверяет изменения в провайдере
 /// </summary>
-public sealed class ProviderHasNoChange : IChangeDetector<ProviderRecord, UpdateProviderModel>
+public sealed class ProviderChangeDetector : IChangeDetector<ProviderRecord, UpdateProviderModel>
 {
     /// <inheritdoc/>
     public bool HasNoChanges(ProviderRecord entity, UpdateProviderModel model)
     {
-        return model.Name.Equals(entity.ProviderName);
+        return model.ProviderName.Equals(entity.ProviderName);
     }
 }
