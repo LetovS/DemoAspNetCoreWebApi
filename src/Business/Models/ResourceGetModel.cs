@@ -26,5 +26,4 @@ public sealed class ResourceGetModel<TEntity> where TEntity : class, IEntityWith
         Data = data;
         Count = count;
     }
-    
 }
