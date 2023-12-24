@@ -14,7 +14,7 @@ namespace Business.Abstract;
 /// <typeparam name="TEntity">Модель БД</typeparam>
 /// <typeparam name="TCreateModel">Модель создания новой сущности</typeparam>
 /// <typeparam name="TUpdateModel">Модель обновления сущности</typeparam>
-public abstract class BusinessServiceBase<TEntity, TCreateModel, TUpdateModel> : IBusinessService
+public abstract class BusinessServiceBase<TEntity, TCreateModel, TUpdateModel> : IBusinessService<TEntity, TCreateModel, TUpdateModel>
     where TEntity : class, IEntityWithId
     where TCreateModel : ICreateModel
     where TUpdateModel : class, IUpdateModel
