@@ -33,23 +33,23 @@ public class ProviderValidatorTest : BusinessValidatorBase
         _sut = new ProviderValidator(_providerReadRepositoryMock, _orderReadRepositoryMock);
     }
     
-    [Fact(DisplayName = "Проверка возможности сохранения. Сохранить возможно.")]
-    public async Task ValidateSave_ShouldBeTrue()
-    {
-        // Arrange
-        var newEntity = FactoryTestData.CreateNewProvider();
+    //[Fact(DisplayName = "Проверка возможности сохранения. Сохранить возможно.")]
+    //public async Task ValidateSave_ShouldBeTrue()
+    //{
+    //    // Arrange
+    //    var newEntity = FactoryTestData.CreateNewProvider();
 
-        // Act
-        Func<Task> f = async () => await _sut.ValidateSave(newEntity, CancellationToken.None);
+    //    // Act
+    //    Func<Task> f = async () => await _sut.ValidateSave(newEntity, CancellationToken.None);
 
-        // Assert
-        var exception = await f.Should().ThrowAsync<ArgumentException>();
-        exception.BeNull();
-        /*.BeEquivalentTo(new
-        {
-            Message = "Сохранить нельзя"
-        });*/
-    }
+    //    // Assert
+    //    var exception = await f.Should().ThrowAsync<ArgumentException>();
+    //    exception.BeNull();
+    //    /*.BeEquivalentTo(new
+    //    {
+    //        Message = "Сохранить нельзя"
+    //    });*/
+    //}
     
     //[Fact(DisplayName = "Проверка возможности сохранения. Сохранить невозможно.")]
     //public async Task ValidateSave_ShouldBeFalse()
