@@ -7,6 +7,9 @@ namespace Store.Entities;
 /// </summary>
 public class OrderRecord : EntityBase
 {
+    /// <summary>
+    /// ctor.
+    /// </summary>
     public OrderRecord(
         Guid id) : base(id)
     {
@@ -26,7 +29,14 @@ public class OrderRecord : EntityBase
     /// ИД поставщика
     /// </summary>
     public Guid ProviderId { get; set; }
+    
+    /// <summary>
+    /// Провайдер
+    /// </summary>
     public virtual ProviderRecord? Provider { get; set; }
 
+    /// <summary>
+    /// Номенклатура заказа
+    /// </summary>
     public virtual List<OrderItemRecord> OrderItems { get; set; } = new List<OrderItemRecord>();
 }

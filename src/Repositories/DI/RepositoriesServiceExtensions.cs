@@ -10,6 +10,9 @@ using Repositories.Implementations.Provider;
 
 namespace Repositories.DI;
 
+/// <summary>
+/// Расширение для сервисов
+/// </summary>
 public static class RepositoriesServiceExtensions
 {
     /// <summary>

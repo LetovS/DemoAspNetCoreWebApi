@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Store.Abstract.Context;
 using Store.ConfigurationOptions;
 
 namespace Store.DI;
 
+/// <summary>
+/// Регистрация зависимостей хранилища
+/// </summary>
 public static class StoreServiceCollectionExtensions
 {
     /// <summary>
@@ -14,10 +16,10 @@ public static class StoreServiceCollectionExtensions
     /// <remarks>Добавляются: ResourcesContext, IResourcesContext, IDbWriter, IDbReader, IDbUnitOfWork</remarks>
     public static void AddStoreDependencies(this IServiceCollection services, DatabaseOptions options)
     {
-        services.AddDbContext<ResourcesContext>(opt => opt.UseSqlServer(options.ConnectionString
+        services.AddDbContext<ResourcesContext>(opt => opt.UseSqlServer(options.ConnectionString ?? throw new ArgumentNullException(options.ConnectionString)
             , opts => {
-                opts.MigrationsHistoryTable(options.MigrationsHistoryTableName);
-                opts.MigrationsAssembly(options.MigrationsAssemblyName);
+                opts.MigrationsHistoryTable(options.MigrationsHistoryTableName ?? throw new ArgumentNullException(options.MigrationsHistoryTableName));
+                opts.MigrationsAssembly(options.MigrationsAssemblyName ?? throw new ArgumentNullException(options.MigrationsAssemblyName));
             }));
         
         // Добавляем контекст таким образом, чтобы при вызове был один и тот же экземляр контекста

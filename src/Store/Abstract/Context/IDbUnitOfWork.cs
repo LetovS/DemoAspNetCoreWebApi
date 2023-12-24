@@ -1,5 +1,8 @@
 ﻿namespace Store.Abstract.Context;
 
+/// <summary>
+/// Модуль
+/// </summary>
 public interface IDbUnitOfWork
 {
     /// <summary>

@@ -1,5 +1,8 @@
 ﻿namespace Store.Abstract.Entity;
 
+/// <summary>
+/// Сущность с ИД
+/// </summary>
 public interface IEntityWithId : IEntity
 {
     /// <summary>

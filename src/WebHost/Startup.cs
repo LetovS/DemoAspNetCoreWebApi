@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Business.DI;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories.DI;
 using Store.ConfigurationOptions;
@@ -6,8 +7,14 @@ using Store.DI;
 
 namespace Web.Hosts;
 
+/// <summary>
+/// Конфигурация хоста <see cref="Program"/>
+/// </summary>
 public static class Startup
 {
+    /// <summary>
+    /// Конфигуратор сервисов
+    /// </summary>
     public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
         var databaseOptions = new DatabaseOptions();
@@ -17,6 +24,9 @@ public static class Startup
         services.AddStoreDependencies(databaseOptions);
 
         services.AddRepositoriesAndEntityFactory();
+
+        services.AddBusinessServices();
+        
         return services;
     }   
 }

@@ -2,6 +2,9 @@
 
 namespace Repositories.Abstract;
 
+/// <summary>
+/// Интерфейс для базового репозитория записи
+/// </summary>
 public interface IDbWriteRepositoryBase<in TEntity> : IDbRepository
 where TEntity : class, IEntity
 {

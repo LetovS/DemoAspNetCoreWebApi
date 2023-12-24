@@ -3,8 +3,12 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace Store.Migrations;
 
+/// <summary>
+/// Фабрика контекста <see cref="ResourcesContext"/>
+/// </summary>
 public class ResourcesContextFactory : IDesignTimeDbContextFactory<ResourcesContext>
 {
+    /// <inheritdoc/>
     public ResourcesContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<ResourcesContext>();

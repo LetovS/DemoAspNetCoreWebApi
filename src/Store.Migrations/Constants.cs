@@ -11,7 +11,7 @@ internal static class Constants
     /// <summary>
     /// Название сборки миграций
     /// </summary>
-    internal const string MigrationsAssemblyName = "src/Store.Migrations";
+    internal const string MigrationsAssemblyName = "Store.Migrations";
     
     /// <summary>
     /// Имя таблицы в БД истории миграций

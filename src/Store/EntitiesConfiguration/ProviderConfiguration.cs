@@ -5,10 +5,14 @@ using Store.EntitiesConfiguration.Extensions;
 
 namespace Store.EntitiesConfiguration;
 
+/// <summary>
+/// Конфигурирование провайдера
+/// </summary>
 public class ProviderConfiguration : IEntityTypeConfiguration<ProviderRecord>
 {
     private const string NameConstraint = "UQ_Providers_Name";
-    
+
+    /// <inheritdoc/>
     public void Configure(EntityTypeBuilder<ProviderRecord> builder)
     {
         builder.ToTable("Providers");

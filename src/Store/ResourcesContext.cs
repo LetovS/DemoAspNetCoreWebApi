@@ -4,6 +4,9 @@ using Store.Entities;
 
 namespace Store;
 
+/// <summary>
+/// Контекст БД
+/// </summary>
 public class ResourcesContext : 
     DbContext,
     IResourcesContext, 
@@ -11,8 +14,12 @@ public class ResourcesContext :
     IDbReader,
     IDbUnitOfWork
 {
+    /// <summary>
+    /// ctor.
+    /// </summary>
     public ResourcesContext(DbContextOptions<ResourcesContext> options) : base(options) {}
 
+    /// <inheritdoc/>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -68,10 +75,13 @@ public class ResourcesContext :
         decimal GetRandomPrice() => (decimal)(rnd.Next(100, 1000) * rnd.NextDouble());
     }
 
+    /// <inheritdoc/>
     public DbSet<ProviderRecord> Providers => Set<ProviderRecord>();
     
+    /// <inheritdoc/>
     public DbSet<OrderRecord> Orders => Set<OrderRecord>();
     
+    /// <inheritdoc/>
     public DbSet<OrderItemRecord> OrderItems => Set<OrderItemRecord>();
 
     void IDbWriter.Add<TEntity>(TEntity entity) => base.Entry(entity).State = EntityState.Added;

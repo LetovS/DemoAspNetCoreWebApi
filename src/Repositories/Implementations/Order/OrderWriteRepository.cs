@@ -5,8 +5,16 @@ using Store.Entities;
 
 namespace Repositories.Implementations.Order;
 
-public class OrderWriteRepository : WriteRepositoryBase<OrderRecord> , IOrderWriteRepository
+/// <summary>
+/// Репозиторий записи заказа
+/// </summary>
+public class OrderWriteRepository :
+    WriteRepositoryBase<OrderRecord>,
+    IOrderWriteRepository
 {
+    /// <summary>
+    /// ctor.
+    /// </summary>
     public OrderWriteRepository(IDbWriter writer) : base(writer)
     {
     }

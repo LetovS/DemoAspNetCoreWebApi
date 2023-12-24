@@ -2,6 +2,9 @@
 
 namespace Repositories.Abstract;
 
+/// <summary>
+/// Интерфей
+/// </summary>
 public interface IEntityFactory
 {
     /// <summary>
