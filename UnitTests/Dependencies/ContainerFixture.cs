@@ -15,7 +15,7 @@ public sealed class ContainerFixture : IDisposable
     /// </summary>
     public ContainerFixture()
     {
-        host = Program.CreateHostBuilder(Array.Empty<string>()).Build();
+        //host = Program.CreateHostBuilder(Array.Empty<string>()).Build();
     }
 
     /// <summary>
