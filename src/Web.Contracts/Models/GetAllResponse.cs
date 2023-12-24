@@ -1,12 +1,12 @@
 ﻿using Store.Abstract.Entity;
 
-namespace Business.Models;
+namespace Web.Contracts.Models;
 
 /// <summary>
-/// 
+/// Модель ответа выборки
 /// </summary>
 /// <typeparam name="TEntity"></typeparam>
-public sealed class ResourceGetModel<TEntity> where TEntity : class, IEntityWithId
+public sealed class GetAllResponse<TEntity> where TEntity : class, IEntityWithId
 {
     /// <summary>
     /// Данные
@@ -21,7 +21,7 @@ public sealed class ResourceGetModel<TEntity> where TEntity : class, IEntityWith
     /// <summary>
     /// ctor.
     /// </summary>
-    public ResourceGetModel(IReadOnlyList<TEntity> data, int count)
+    public GetAllResponse(IReadOnlyList<TEntity> data, int count)
     {
         Data = data;
         Count = count;
