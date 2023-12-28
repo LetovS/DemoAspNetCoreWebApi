@@ -29,14 +29,8 @@ public sealed class Startup
     /// </summary>
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddMvc().AddApplicationPart(typeof(TestController).Assembly);
+        services.AddControllers().AddApplicationPart(typeof(TestController).Assembly);
         services.AddEndpointsApiExplorer();
-
-        //services
-        //    .AddMvcCore()
-        //    .AddApiExplorer()
-        //    .AddControllersAsServices()
-        //    .AddApplicationPart();
 
         services.AddSwaggerGen(c =>
         {
@@ -64,6 +58,8 @@ public sealed class Startup
 
         services.AddRepositoriesAndEntityFactory();
 
+        services.AddCors();
+
         services.AddAutoMapper(profile =>
         {
             profile.AddProfile<BusinessProfile>();
@@ -90,8 +86,6 @@ public sealed class Startup
 
         builder.UseCors();
 
-
         builder.UseEndpoints(options => options.MapControllers());
     }
 }
-

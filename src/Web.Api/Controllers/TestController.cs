@@ -22,9 +22,11 @@ public class TestController : ControllerBase
         this.service = service;
     }
 
-
+    /// <summary>
+    /// Получить всех провайдеров
+    /// </summary>
     [HttpGet("Gets", Name = "Get")]
-    public async Task<IActionResult> GetAsync()
+    public async Task<IActionResult> GetAllAsync()
     {
         var all = await service.GetAll();
         return Ok(all.Data);
