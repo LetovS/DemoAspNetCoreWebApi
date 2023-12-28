@@ -25,7 +25,8 @@ public class TestController : ControllerBase
 
     [HttpGet("Gets", Name = "Get")]
     public async Task<IActionResult> GetAsync()
-    {        
-        return Ok(new ProviderResponse(Guid.NewGuid(), "Test"));
+    {
+        var all = await service.GetAll();
+        return Ok(all.Data);
     }
 }
