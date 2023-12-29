@@ -11,14 +11,15 @@ public class ProviderRecord : EntityBase
     /// ctor.
     /// </summary>
     public ProviderRecord(
-        Guid id) : base(id)
+        Guid id, string providerName) : base(id)
     {
+        ProviderName = providerName;
     }
     
     /// <summary>
     /// Название поставщика
     /// </summary>
-    public string? ProviderName { get; set; }    
+    public string ProviderName { get; set; }    
 
     /// <summary>
     /// Заказы
