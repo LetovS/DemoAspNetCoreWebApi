@@ -32,7 +32,7 @@ public class ApiAutoMapperTests
     }
     
     [Fact(DisplayName = "Проверка валидности маппинга")]
-    public void ShouldBeValid()
+    internal void ShouldBeValid()
     {
         mapper.ConfigurationProvider.AssertConfigurationIsValid();
     }

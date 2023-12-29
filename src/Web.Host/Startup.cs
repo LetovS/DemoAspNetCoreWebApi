@@ -19,6 +19,9 @@ public sealed class Startup
 {
     private readonly IConfiguration configuration;
 
+    /// <summary>
+    /// ctor.
+    /// </summary>
     public Startup(IConfiguration configuration)
     {
         this.configuration = configuration;
@@ -68,8 +71,10 @@ public sealed class Startup
         services.AddBusinessServices();        
     }
 
-    public void Configure(
-        IApplicationBuilder builder)
+    /// <summary>
+    /// Конфигурация middleware
+    /// </summary>
+    public void Configure(IApplicationBuilder builder)
     {
 
         builder.UseSwagger();
