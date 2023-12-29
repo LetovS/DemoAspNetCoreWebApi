@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel.Design;
+using Web.Api.Automapper;
 
 namespace Web.Api;
 
@@ -14,7 +15,7 @@ public static class WebApiServiceCollectionExtension
     /// </summary>
     public static void AddWebApiServices(this IServiceCollection services)
     {
-
+        services.AddAutoMapper(x => x.AddProfile<WebApiMapperProfile>());
     }
 
 }
