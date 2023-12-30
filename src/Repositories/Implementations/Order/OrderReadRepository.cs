@@ -32,6 +32,6 @@ public class OrderReadRepository :
     public async Task<IReadOnlyList<OrderRecord>> GetByProviderId(Guid providerId, CancellationToken ct) =>
         await DbReader
             .Read<OrderRecord>()
-            .Where(x => x.Id == providerId)
+            .Where(x => x.ProviderId == providerId)
             .ToListAsync(ct);
 }
