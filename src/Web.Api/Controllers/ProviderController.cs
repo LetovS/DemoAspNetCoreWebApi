@@ -2,6 +2,8 @@
 using Business.Abstract.Services;
 using Business.Models.Provider;
 using Microsoft.AspNetCore.Mvc;
+using Store.Entities;
+using Web.Api.Controllers.Base;
 using Web.Api.Validators;
 using Web.Contracts.Models;
 using Web.Contracts.Models.Provider;
@@ -13,9 +15,9 @@ namespace Web.Api.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/v1/providers")]
-public sealed class ProviderController : ControllerBase
+public sealed class ProviderController : BaseController<ProviderRecord,CreateProviderModel,UpdateProviderModel>
 {
-    private readonly IProviderService _serviceProvider;
+    /*private readonly IProviderService _serviceProvider;
     private readonly IMapper _mapper;
 
     /// <summary>
@@ -25,9 +27,9 @@ public sealed class ProviderController : ControllerBase
     {
         _serviceProvider = serviceProvider;
         _mapper = mapper;
-    }
+    }*/
 
-    /// <summary>
+    /*/// <summary>
     /// Получить провайдера по ИД
     /// </summary>
     [HttpGet("{id:guid}",Name = "GetProviderById")]
@@ -92,5 +94,13 @@ public sealed class ProviderController : ControllerBase
         var result = await _serviceProvider.DeleteAsync(id, ct);
         
         return result ? Ok() : Problem();
+    }*/
+    /// <summary>
+    /// ctor.
+    /// </summary>
+    public ProviderController(
+        IBusinessService<ProviderRecord, CreateProviderModel, UpdateProviderModel> service,
+        IMapper mapper) : base(service, mapper)
+    {
     }
 }
