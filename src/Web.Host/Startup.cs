@@ -46,9 +46,6 @@ public sealed class Startup
                 Title = "Platform Resources API",
                 Version = "v1"
             });
-
-            //var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            //c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
 
 
