@@ -7,7 +7,6 @@ using Microsoft.OpenApi.Models;
 using Repositories.DI;
 using Store.ConfigurationOptions;
 using Store.DI;
-using System.Reflection;
 using Web.Api.Controllers;
 
 namespace Web.Hosts;

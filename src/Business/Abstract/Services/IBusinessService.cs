@@ -1,8 +1,6 @@
 ﻿using Business.Abstract.Models;
 using Business.Models;
-using Business.Models.OrderItem;
 using Store.Abstract.Entity;
-using Store.Entities;
 
 namespace Business.Abstract.Services;
 

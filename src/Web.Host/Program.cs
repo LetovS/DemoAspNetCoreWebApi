@@ -10,7 +10,7 @@ internal static class Program
 {
     internal static void Main(string[] args)
     {
-        DatabaseMigrationManager.MigrateSchema().ConfigureAwait(false);
+        //DatabaseMigrationManager.MigrateSchema().ConfigureAwait(false);
         CreateHostBuilder(args)
             .Build()
             .Run();

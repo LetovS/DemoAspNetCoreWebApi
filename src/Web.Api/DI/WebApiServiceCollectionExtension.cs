@@ -1,9 +1,7 @@
-﻿
-using Microsoft.Extensions.DependencyInjection;
-using System.ComponentModel.Design;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Web.Api.Automapper;
 
-namespace Web.Api;
+namespace Web.Api.DI;
 
 /// <summary>
 /// Расширение для <see cref="IServiceCollection"/>

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Business.Models.Provider;
 using Store.Entities;
 using Web.Api.Automapper.Converters;
 using Web.Contracts.Models.Order;

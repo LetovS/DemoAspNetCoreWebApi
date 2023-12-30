@@ -1,6 +1,4 @@
-﻿using Store.Abstract.Entity;
-
-namespace Web.Contracts.Models;
+﻿namespace Web.Contracts.Models;
 
 /// <summary>
 /// Модель ответа выборки
