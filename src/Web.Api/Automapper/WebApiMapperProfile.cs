@@ -22,6 +22,11 @@ public class WebApiMapperProfile : Profile
 
         CreateMap<UpdateProviderRequest, UpdateProviderModel>()
             .ForCtorParam("providerName", x => x.MapFrom(y => y.Name));
+
+        CreateMap<ProviderRecord, ProviderResponse>()
+            .ForCtorParam("id", opt => opt.MapFrom(y => y.Id))
+            .ForCtorParam("name", opt => opt.MapFrom(y => y.ProviderName));
+        
     }   
 }
 

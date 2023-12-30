@@ -34,7 +34,10 @@ public sealed class ProviderController : ControllerBase
     public async Task<IActionResult> GetById([FromRoute, NotDefaultGuid] Guid id, CancellationToken ct)
     {
         var provider = await _serviceProvider.GetByIdAsync(id, ct);
-        return Ok(provider);
+
+        var response = _mapper.Map<ProviderResponse>(provider);
+
+        return Ok(response);
     }
 
     /// <summary>
@@ -45,7 +48,7 @@ public sealed class ProviderController : ControllerBase
         [FromQuery]PaginationFilter paginationFilter,
         CancellationToken ct)
     {
-        var response = await _serviceProvider.GetAll(paginationFilter.Offset, paginationFilter.Offset, ct);
+        var response = await _serviceProvider.GetAll(paginationFilter.Offset, paginationFilter.Limit, ct);
         var data = _mapper.Map<List<ProviderResponse>>(response.Data);
         return new GetAllResponse<ProviderResponse>(data, response.Count);
     } 
