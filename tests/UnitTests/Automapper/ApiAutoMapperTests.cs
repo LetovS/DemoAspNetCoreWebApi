@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Automapper;
+using Web.Api.Automapper;
 using Xunit;
 
 namespace UnitTests.Automapper;
@@ -18,7 +19,7 @@ public class ApiAutoMapperTests
     {
         mapper = new MapperConfiguration(p =>
         {
-            var assembly = new[] { typeof(BusinessProfile).Assembly };
+            var assembly = new[] { typeof(BusinessProfile).Assembly, typeof(WebApiMapperProfile).Assembly };
 
             var profiles = assembly.Select(x => x.GetTypes()
                     .Where(x => typeof(Profile).IsAssignableFrom(x)))

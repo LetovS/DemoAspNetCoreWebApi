@@ -8,6 +8,7 @@ using Repositories.DI;
 using Store.ConfigurationOptions;
 using Store.DI;
 using Web.Api.Controllers;
+using Web.Api.DI;
 
 namespace Web.Hosts;
 
@@ -64,7 +65,9 @@ public sealed class Startup
             profile.AddProfile<BusinessProfile>();
         });
 
-        services.AddBusinessServices();        
+        services.AddBusinessServices();
+
+        services.AddWebApiServices();
     }
 
     /// <summary>
