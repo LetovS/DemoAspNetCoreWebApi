@@ -1,11 +1,12 @@
-﻿using Web.Contracts.Models.OrderItem;
+﻿using Web.Contracts.Abstract;
+using Web.Contracts.Models.OrderItem;
 
 namespace Web.Contracts.Models.Order;
 
 /// <summary>
 /// Модель ответа заказа
 /// </summary>
-public sealed class OrderResponse
+public sealed class OrderResponse : IResponse
 {
     /// <summary>
     /// ctor.
