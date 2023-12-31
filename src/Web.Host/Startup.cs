@@ -1,5 +1,7 @@
 ﻿using Business.Automapper;
 using Business.DI;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +11,7 @@ using Store.ConfigurationOptions;
 using Store.DI;
 using Web.Api.Controllers;
 using Web.Api.DI;
+using Web.Api.Validators.Provider;
 
 namespace Web.Hosts;
 
@@ -49,6 +52,12 @@ public sealed class Startup
             });
         });
 
+        services
+            .AddFluentValidationAutoValidation(cfg =>
+            {
+                cfg.DisableDataAnnotationsValidation = false;
+            });
+        services.AddValidatorsFromAssemblyContaining<CreateProviderRequestValidator>();
 
         var databaseOptions = new DatabaseOptions();
         
