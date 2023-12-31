@@ -1,9 +1,11 @@
-﻿namespace Web.Contracts.Models;
+﻿using Web.Contracts.Abstract;
+
+namespace Web.Contracts.Models;
 
 /// <summary>
 /// Модель ответа выборки
 /// </summary>
-public sealed class GetAllResponse<TResponse> where TResponse : class
+public sealed class GetAllResponse<TResponse> where TResponse : class, IResponse
 {
     /// <summary>
     /// Данные

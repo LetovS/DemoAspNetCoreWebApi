@@ -25,8 +25,9 @@ public class WebApiMapperProfile : Profile
 
         CreateMap<ProviderRecord, ProviderResponse>()
             .ForCtorParam("id", opt => opt.MapFrom(y => y.Id))
-            .ForCtorParam("name", opt => opt.MapFrom(y => y.ProviderName));
-        
+            .ForCtorParam("name", opt => opt.MapFrom(y => y.ProviderName))
+            .ForMember(x => x.Orders, opt => opt.Ignore());
+            
     }   
 }
 
