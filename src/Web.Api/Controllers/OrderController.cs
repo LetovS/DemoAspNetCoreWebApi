@@ -21,7 +21,8 @@ public sealed class OrderController : ControllerBase
     /// <summary>
     /// ctor.
     /// </summary>
-    public OrderController(IOrderService orderService, IMapper mapper)
+    public OrderController(IOrderService orderService,
+        IMapper mapper)
     {
         _orderService = orderService;
         _mapper = mapper;
@@ -30,11 +31,16 @@ public sealed class OrderController : ControllerBase
     /// <summary>
     /// Получить заказ по ИД
     /// </summary>
-    [HttpGet("{id:guid}",Name = "GetOrderById")]
-    public async Task<IActionResult> GetById([FromRoute, NotDefaultGuid] Guid id, CancellationToken ct)
+    [HttpGet("{orderId:guid}", Name = "GetOrderById")]
+    public async Task<IActionResult> GetById(
+        [FromRoute, NotDefaultGuid] Guid orderId,
+        CancellationToken ct)
     {
-        var order = await _orderService.GetByIdAsync(id, ct);
-        return Ok(order);
+        var order = await _orderService.GetByIdAsync(orderId, ct);
+
+        var response = _mapper.Map<OrderResponse>(order);
+
+        return Ok(response);
     }
 
     /// <summary>
@@ -45,8 +51,11 @@ public sealed class OrderController : ControllerBase
         [FromQuery]PaginationFilter paginationFilter,
         CancellationToken ct)
     {
-        var response = await _orderService.GetAll(paginationFilter.Offset, paginationFilter.Offset, ct);
+        var response = await _orderService
+            .GetAll(paginationFilter.Offset, paginationFilter.Limit, ct);
+
         var data = _mapper.Map<List<OrderResponse>>(response.Data);
+
         return new GetAllResponse<OrderResponse>(data, response.Count);
     } 
     
@@ -55,15 +64,15 @@ public sealed class OrderController : ControllerBase
     /// </summary> 
     /// <response code="200">Данные получены</response>
     /// <response code="400">Ошибка валидации входных данных</response>
-    [HttpPost("{id:guid}",Name = "CreateOrder")]
+    [HttpPost("{orderId:guid}", Name = "CreateOrder")]
     public async Task<IActionResult> Create(
-        [FromRoute, NotDefaultGuid] Guid id,
+        [FromRoute, NotDefaultGuid] Guid orderId,
         CreateOrderRequest request,
         CancellationToken ct)
     {
         var createOrder = _mapper.Map<CreateOrderModel>(request);
 
-        var created = await _orderService.CreateAsync(id, createOrder, ct);
+        var created = await _orderService.CreateAsync(orderId, createOrder, ct);
 
         return Ok(created);
     }
@@ -71,14 +80,14 @@ public sealed class OrderController : ControllerBase
     /// <summary>
     /// Обновить заказ
     /// </summary>
-    [HttpPut("{id:guid}", Name = "UpdateOrder")]
+    [HttpPut("{orderId:guid}", Name = "UpdateOrder")]
     public async Task<IActionResult> Update(
-        [FromRoute, NotDefaultGuid] Guid id,
+        [FromRoute, NotDefaultGuid] Guid orderId,
         UpdateOrderRequest request,
         CancellationToken ct)
     {
         var createModel = _mapper.Map<UpdateOrderModel>(request);
-        var result = await _orderService.UpdateAsync(id, createModel, ct);
+        var result = await _orderService.UpdateAsync(orderId, createModel, ct);
         
         return result ? Ok() : Problem();
     }
@@ -86,10 +95,10 @@ public sealed class OrderController : ControllerBase
     /// <summary>
     /// Удалить заказ
     /// </summary>
-    [HttpDelete("{id:guid}", Name = "DeleteOrder")]
-    public async Task<IActionResult> Delete([FromRoute, NotDefaultGuid] Guid id,CancellationToken ct)
+    [HttpDelete("{orderId:guid}", Name = "DeleteOrder")]
+    public async Task<IActionResult> Delete([FromRoute, NotDefaultGuid] Guid orderId,CancellationToken ct)
     {
-        var result = await _orderService.DeleteAsync(id, ct);
+        var result = await _orderService.DeleteAsync(orderId, ct);
         
         return result ? Ok() : Problem();
     }

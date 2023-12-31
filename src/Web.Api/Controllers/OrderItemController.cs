@@ -21,7 +21,9 @@ public class OrderItemController : ControllerBase
     /// <summary>
     /// ctor.
     /// </summary>
-    public OrderItemController(IOrderItemService orderItemService, IMapper mapper)
+    public OrderItemController(
+        IOrderItemService orderItemService,
+        IMapper mapper)
     {
         _orderItemService = orderItemService;
         _mapper = mapper;
@@ -31,7 +33,9 @@ public class OrderItemController : ControllerBase
     /// Получить позицию заказа по ИД
     /// </summary>
     [HttpGet("{id:guid}", Name = "GetOrderItemById")]
-    public async Task<IActionResult> GetById([FromRoute, NotDefaultGuid] Guid id, CancellationToken ct)
+    public async Task<IActionResult> GetById(
+        [FromRoute, NotDefaultGuid] Guid id,
+        CancellationToken ct)
     {
         var orderItem = await _orderItemService.GetByIdAsync(id, ct);
         return Ok(orderItem);

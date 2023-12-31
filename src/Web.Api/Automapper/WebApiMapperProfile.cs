@@ -2,9 +2,7 @@
 using Business.Models.Order;
 using Business.Models.OrderItem;
 using Business.Models.Provider;
-using Microsoft.Data.SqlClient;
 using Store.Entities;
-using Web.Api.Automapper.Converters;
 using Web.Contracts.Models.Order;
 using Web.Contracts.Models.OrderItem;
 using Web.Contracts.Models.Provider;
