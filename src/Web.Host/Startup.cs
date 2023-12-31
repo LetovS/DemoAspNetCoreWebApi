@@ -82,7 +82,9 @@ public sealed class Startup
     /// <summary>
     /// Конфигурация middleware
     /// </summary>
+#pragma warning disable CA1822 // Mark members as static
     public void Configure(IApplicationBuilder builder)
+#pragma warning restore CA1822 // Mark members as static
     {
         builder.UseSwagger();
 
