@@ -13,6 +13,9 @@ public class UpdateProviderRequestValidator : AbstractValidator<UpdateProviderRe
     /// </summary>
     public UpdateProviderRequestValidator()
     {
-        
+        RuleFor(x => x.Name)
+            .Cascade(CascadeMode.Stop)
+            .NotNull().WithMessage(x => $"Name не может быть null")
+            .NotEmpty().WithMessage(x => $"Name не может быть пустым");
     }
 }
