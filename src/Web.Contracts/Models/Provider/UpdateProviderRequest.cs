@@ -1,9 +1,11 @@
-﻿namespace Web.Contracts.Models.Provider;
+﻿using Web.Contracts.Abstract;
+
+namespace Web.Contracts.Models.Provider;
 
 /// <summary>
 /// Модель запроса обновления провайдера
 /// </summary>
-public sealed class UpdateProviderRequest
+public sealed class UpdateProviderRequest : IUpdateModelRequest
 {
     /// <summary>
     /// Название провайдера

@@ -28,24 +28,35 @@ public class ProviderValidator : ValidatorBase<ProviderRecord>
     public override async Task ValidateSave(ProviderRecord entity, CancellationToken ct)
     {
         var entityById = await _readProviderRepository.GetById(entity.Id, ct);
+
+        if (entityById != null)
+        {
+            throw new ArgumentException("Такой ИД уже есть");
+        }
         
         var entityByName = await _readProviderRepository.GetByName(entity.ProviderName!, ct);
 
-        if (entityById != null && entityByName != null)
+        if (entityByName != null && entityByName.Id != entity.Id)
         {
-            throw new ArgumentException("Сохранить нельзя");
+            throw new ArgumentException("Провайдер с таким названием уже есть");
         }
     }
 
     /// <inheritdoc/>
     public override async Task ValidateDelete(Guid entityId, CancellationToken ct)
     {
-        var entityById = await _readProviderRepository.GetById(entityId, ct) ?? throw new ArgumentException();
+        var entityById = await _readProviderRepository.GetById(entityId, ct);
         
+        if (entityById is null)
+        {
+            throw new InvalidOperationException("Entity with Id = {entityId, ct} not exists");
+        }
+
         var orders = await _readOrderRepository.GetByProviderId(entityId, ct);
+
         if (orders.Any())
         {
-            throw new ArgumentException("Удалить нельзя");
+            throw new ArgumentException("Entity has associated data");
         }
     }
 }

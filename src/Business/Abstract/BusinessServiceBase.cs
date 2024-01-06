@@ -14,7 +14,8 @@ namespace Business.Abstract;
 /// <typeparam name="TEntity">Модель БД</typeparam>
 /// <typeparam name="TCreateModel">Модель создания новой сущности</typeparam>
 /// <typeparam name="TUpdateModel">Модель обновления сущности</typeparam>
-public abstract class BusinessServiceBase<TEntity, TCreateModel, TUpdateModel> : IBusinessService<TEntity, TCreateModel, TUpdateModel>
+public abstract class BusinessServiceBase<TEntity, TCreateModel, TUpdateModel> :
+    IBusinessService<TEntity, TCreateModel, TUpdateModel>
     where TEntity : class, IEntityWithId
     where TCreateModel : ICreateModel
     where TUpdateModel : class, IUpdateModel
@@ -95,6 +96,11 @@ public abstract class BusinessServiceBase<TEntity, TCreateModel, TUpdateModel> :
     /// </summary>
     public async Task<Guid> CreateAsync(Guid id, TCreateModel model, CancellationToken ct)
     {
+        if (await ReadRepository.IsExistById(id, ct))
+        {
+            throw new Exception("Already exists");
+        }
+
         var createdEntity = CreateNewEntity(id, model);
         
         Mapper.Map(model, createdEntity);
@@ -129,7 +135,7 @@ public abstract class BusinessServiceBase<TEntity, TCreateModel, TUpdateModel> :
         }
 
         Mapper.Map(model, entity);
-
+                
         await BusinessValidator.ValidateSave(entity, ct);
         
         WriteRepository.Update(entity);

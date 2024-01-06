@@ -33,7 +33,7 @@ public class ResourcesContext :
     {
         var providers = Enumerable
             .Range(1, 10)
-            .Select(id => new ProviderRecord(Guid.NewGuid()) { ProviderName = $"Provider name {id}" }).ToList();
+            .Select(id => new ProviderRecord(Guid.NewGuid(), $"Provider name {id}")).ToList();
 
         var providersId = providers.Select(x => x.Id).ToList();
 

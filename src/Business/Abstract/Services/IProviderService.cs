@@ -1,5 +1,4 @@
-﻿using Business.Models;
-using Business.Models.Provider;
+﻿using Business.Models.Provider;
 using Store.Entities;
 
 namespace Business.Abstract.Services;

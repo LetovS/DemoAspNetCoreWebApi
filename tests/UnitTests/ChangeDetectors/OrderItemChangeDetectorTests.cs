@@ -26,7 +26,7 @@ public class OrderItemChangeDetectorTests : ChangeDetectorBase
     }
 
     [Fact(DisplayName = "Проверка эквивалентности сущности и модели. Сущность и модель эквивалентны.")]
-    public void HasNoChanges_NoChanges_ShouldBeTrue()
+    internal void HasNoChanges_NoChanges_ShouldBeTrue()
     {
         // Arrange
         var entity = FactoryTestData.CreateNewOrderItem();
@@ -44,7 +44,7 @@ public class OrderItemChangeDetectorTests : ChangeDetectorBase
     }
 
     [Fact(DisplayName = "Проверка эквивалентности сущности и модели. Сущность и модель неэквивалентны.")]
-    public void HasNoChanges_WithChanges_ShouldBeFalse()
+    internal void HasNoChanges_WithChanges_ShouldBeFalse()
     {
         // Arrange
         var entity = FactoryTestData.CreateNewOrderItem();

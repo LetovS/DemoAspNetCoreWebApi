@@ -1,15 +1,8 @@
 ﻿using AutoFixture;
-using AutoFixture.AutoMoq;
 using Business.Implementations.Validators;
-using FluentAssertions;
-using Microsoft.AspNetCore.Http;
-using Moq;
 using Repositories.Abstract.Order;
 using Repositories.Abstract.Provider;
 using Repositories.Implementations.Order;
-using Repositories.Implementations.Provider;
-using UnitTests.ChangeDetectors;
-using Xunit;
 
 namespace UnitTests.Validators.Business;
 

@@ -1,9 +1,11 @@
-﻿namespace Web.Contracts.Models.Order;
+﻿using Web.Contracts.Abstract;
+
+namespace Web.Contracts.Models.Order;
 
 /// <summary>
 /// Модель запроса создания заказа
 /// </summary>
-public sealed class CreateOrderRequest
+public sealed class CreateOrderRequest : ICreateModelRequest
 {
     /// <summary>
     /// Номер заказа

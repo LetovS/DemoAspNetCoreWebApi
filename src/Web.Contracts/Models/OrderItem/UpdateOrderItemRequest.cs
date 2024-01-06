@@ -1,9 +1,11 @@
-﻿namespace Web.Contracts.Models.OrderItem;
+﻿using Web.Contracts.Abstract;
+
+namespace Web.Contracts.Models.OrderItem;
 
 /// <summary>
 /// Модель запроса обновления пункта заказа
 /// </summary>
-public sealed class UpdateOrderItemRequest
+public sealed class UpdateOrderItemRequest : IUpdateModelRequest
 {
     /// <summary>
     /// Название товара

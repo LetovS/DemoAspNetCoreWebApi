@@ -1,11 +1,12 @@
-﻿using Web.Contracts.Models.Order;
+﻿using Web.Contracts.Abstract;
+using Web.Contracts.Models.Order;
 
 namespace Web.Contracts.Models.Provider;
 
 /// <summary>
 /// Модель ответа провайдера
 /// </summary>
-public sealed class ProviderResponse
+public sealed class ProviderResponse : IResponse
 {
     /// <summary>
     /// ctor.

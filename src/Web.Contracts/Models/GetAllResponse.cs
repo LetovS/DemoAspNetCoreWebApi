@@ -1,17 +1,16 @@
-﻿using Store.Abstract.Entity;
+﻿using Web.Contracts.Abstract;
 
 namespace Web.Contracts.Models;
 
 /// <summary>
 /// Модель ответа выборки
 /// </summary>
-/// <typeparam name="TEntity"></typeparam>
-public sealed class GetAllResponse<TEntity> where TEntity : class, IEntityWithId
+public sealed class GetAllResponse<TResponse> where TResponse : class, IResponse
 {
     /// <summary>
     /// Данные
     /// </summary>
-    public readonly IReadOnlyList<TEntity> Data = new List<TEntity>();
+    public readonly IReadOnlyList<TResponse> Data = new List<TResponse>();
 
     /// <summary>
     /// Количество элементов
@@ -21,7 +20,7 @@ public sealed class GetAllResponse<TEntity> where TEntity : class, IEntityWithId
     /// <summary>
     /// ctor.
     /// </summary>
-    public GetAllResponse(IReadOnlyList<TEntity> data, int count)
+    public GetAllResponse(IReadOnlyList<TResponse> data, int count)
     {
         Data = data;
         Count = count;

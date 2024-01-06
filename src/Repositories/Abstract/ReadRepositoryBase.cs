@@ -62,6 +62,7 @@ where TEntity : EntityBase
         {
             return (count,
                 await ApplyQueryAdjustments(query)
+                    .OrderBy(x => x.Id)
                     .Skip(offset)
                     .Take(limit)
                     .ToArrayAsync(ct));

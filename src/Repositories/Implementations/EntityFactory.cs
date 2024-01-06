@@ -12,10 +12,7 @@ public class EntityFactory : IEntityFactory
     public ProviderRecord CreateNewProvider(
         Guid? id,
         string name) =>
-            new ProviderRecord(id ?? GenerateId())
-                {
-                    ProviderName = name
-                };
+            new ProviderRecord(id ?? GenerateId(), name);
 
     /// <inheritdoc/>
     public OrderRecord CreateNewOrder(
