@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Web.Api.Automapper;
+﻿using Web.Api.Automapper;
 
 namespace Web.Api.DI;
 
