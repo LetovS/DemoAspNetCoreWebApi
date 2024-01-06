@@ -1,10 +1,5 @@
 ﻿//using Business.Automapper;
 //using Business.DI;
-//using FluentValidation.AspNetCore;
-//using FluentValidation;
-//using Microsoft.AspNetCore.Builder;
-//using Microsoft.Extensions.Configuration;
-//using Microsoft.Extensions.DependencyInjection;
 //using Microsoft.OpenApi.Models;
 //using Repositories.DI;
 //using Store.ConfigurationOptions;
@@ -57,9 +52,9 @@
 //        services.AddValidatorsFromAssemblyContaining<CreateProviderRequestValidator>();
 
 //        var databaseOptions = new DatabaseOptions();
-        
+
 //        configuration.GetSection(nameof(DatabaseOptions)).Bind(databaseOptions);
-        
+
 //        services.AddStoreDependencies(databaseOptions);
 
 //        services.AddRepositoriesAndEntityFactory();
@@ -90,7 +85,7 @@
 //            opt.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
 //            opt.RoutePrefix = string.Empty;
 
-//        });        
+//        });
 
 //        builder.UseHttpsRedirection();
 
