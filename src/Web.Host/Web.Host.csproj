@@ -22,7 +22,7 @@
       <ProjectReference Include="..\Repositories\Repositories.csproj" />
       <ProjectReference Include="..\Store.Migrations\Store.Migrations.csproj" />
       <ProjectReference Include="..\Store\Store.csproj" />
-      <ProjectReference Include="..\Web.Api\Web.Api.csproj" />
+      <ProjectReference Include="..\Web.Api\Web.Api2.csproj" />
     </ItemGroup>
 
     <ItemGroup>
